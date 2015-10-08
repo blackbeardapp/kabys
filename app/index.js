@@ -1,6 +1,7 @@
-var dragDrop = require('drag-drop')
-var React = require('react')
-var ReactDOM = require('react-dom')
+import dragDrop from 'drag-drop'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './app.scss'
 
 class Kabys extends React.Component {
   constructor(props) {
