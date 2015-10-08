@@ -4,8 +4,10 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using io.js <script>document.write(process.version)</script>
-    and Electron <script>document.write(process.versions['electron'])</script>.
+    <div id="kabys"></div>
+    <script>
+    require('./build/bundle')
+    </script>
+    <link rel="stylesheet" href="app/app.css">
   </body>
 </html>
