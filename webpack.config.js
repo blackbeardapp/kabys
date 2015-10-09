@@ -11,7 +11,7 @@ module.exports = {
     ]
   },
   target: 'atom',
-  externals: [{
+  externals: {
     db: 'db'
-  }]
+  }
 }

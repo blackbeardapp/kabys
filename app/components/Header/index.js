@@ -1,10 +1,11 @@
 import React from 'react'
 import Button from '../Button'
+import ProjectActions from '../../actions/ProjectActions'
 import './style.scss'
 
 export default class Header extends React.Component {
   onClickCreate() {
-    alert('Create!')
+    ProjectActions.createProject('Test Project')
   }
   render() {
     return (

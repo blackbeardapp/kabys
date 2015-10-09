@@ -4,6 +4,7 @@ import './style.scss'
 import Header from '../Header'
 import FilesStore from '../../stores/FilesStore'
 import FilesActions from '../../actions/FilesActions'
+import Projects from '../Projects'
 
 export default class Kabys extends React.Component {
   constructor(props) {
@@ -46,6 +47,7 @@ export default class Kabys extends React.Component {
             </div>
           }
           {this.state.files.map((file) => <div key={file.path}>{file.path}</div>)}
+          <Projects/>
         </div>
       </div>
     )
