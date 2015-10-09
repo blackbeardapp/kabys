@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "alt": "^0.17.4",
+    "classnames": "^2.1.5",
     "drag-drop": "^2.3.0",
     "leveldown": "^1.4.1",
     "levelup": "^1.2.1",
