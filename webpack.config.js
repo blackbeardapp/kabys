@@ -10,5 +10,8 @@ module.exports = {
       { test: /\.scss$/, loaders: ["style", "css", "sass"]}
     ]
   },
-  target: 'atom'
+  target: 'atom',
+  externals: [{
+    db: 'db'
+  }]
 }

@@ -24,6 +24,8 @@
   "dependencies": {
     "alt": "^0.17.4",
     "drag-drop": "^2.3.0",
+    "leveldown": "^1.4.1",
+    "levelup": "^1.2.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }

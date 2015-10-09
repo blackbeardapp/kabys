@@ -7,7 +7,14 @@
     <div id="kabys"></div>
     <link href='./app/assets/fonts/opensans/OpenSans-Regular.ttf' rel='stylesheet' type='text/css'>
     <script>
-    require('./build/bundle')
+      var levelup = require('levelup')
+      var leveldown = require('leveldown')
+      var db = levelup(__dirname + '/db', {
+        db: leveldown,
+        valueEncoding : 'json'
+      })
+      window.db = db
+      require('./build/bundle')
     </script>
   </body>
 </html>
