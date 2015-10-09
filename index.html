@@ -8,12 +8,12 @@
     <link href='./app/assets/fonts/opensans/OpenSans-Regular.ttf' rel='stylesheet' type='text/css'>
     <script>
       var levelup = require('levelup')
-      var leveldown = require('leveldown')
+      var leveljs = require('level-js')
       var db = levelup(__dirname + '/db', {
-        db: leveldown,
-        valueEncoding : 'json'
+        db: leveljs,
+        valueEncoding: 'json'
       })
-      window.db = db
+      window.db = db;
       require('./build/bundle')
     </script>
   </body>
