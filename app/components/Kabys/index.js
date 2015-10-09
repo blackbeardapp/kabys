@@ -5,6 +5,7 @@ import Header from '../Header'
 import FilesStore from '../../stores/FilesStore'
 import FilesActions from '../../actions/FilesActions'
 import Projects from '../Projects'
+import ProjectActions from '../../actions/ProjectActions'
 
 export default class Kabys extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ export default class Kabys extends React.Component {
       }
     })
     FilesActions.updateFiles(files)
+    ProjectActions.createProject(files[0].fullPath.split('/')[1])
     this.setState({
       dockerfile: dockerfile
     })
@@ -41,12 +43,6 @@ export default class Kabys extends React.Component {
       <div className='Kabys'>
         <Header/>
         <div className='Kabys__Content'>
-          {this.state.dockerfile &&
-            <div>
-              This folder contains a dockerfile.
-            </div>
-          }
-          {this.state.files.map((file) => <div key={file.path}>{file.path}</div>)}
           <Projects/>
         </div>
       </div>
