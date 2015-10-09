@@ -2,15 +2,26 @@ import dragDrop from 'drag-drop'
 import React from 'react'
 import './style.scss'
 import Header from '../Header'
+import FilesStore from '../../stores/FilesStore'
+import FilesActions from '../../actions/FilesActions'
 
 export default class Kabys extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      files: [],
+      files: FilesStore.getState().files,
       dockerfile: false
     }
+  }
+  componentDidMount() {
     dragDrop('body', this.onDragged.bind(this))
+    FilesStore.listen(this.onChange.bind(this))
+  }
+  componentWillUnmount() {
+    FilesStore.unlisten(this.onChange)
+  }
+  onChange(files) {
+    this.setState(files)
   }
   onDragged(files) {
     let dockerfile = false
@@ -19,8 +30,8 @@ export default class Kabys extends React.Component {
         dockerfile = true
       }
     })
+    FilesActions.updateFiles(files)
     this.setState({
-      files: files,
       dockerfile: dockerfile
     })
   }
