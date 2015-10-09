@@ -1,6 +1,8 @@
 import React from 'react'
 import ProjectStore from '../../stores/ProjectStore'
 import ProjectActions from '../../actions/ProjectActions'
+import Project from '../Project'
+import styles from './style.scss'
 
 export default class Projects extends React.Component {
   constructor() {
@@ -22,14 +24,16 @@ export default class Projects extends React.Component {
   render() {
     return (
       <div className='Projects'>
-        <h2>
-          Projects
-        </h2>
-        <ul>
+        <div className={styles.Projects__Header}>
+          <h2 className={styles.Projects__Title}>
+            Projects
+          </h2>
+        </div>
+        <div>
           {this.state.projects.map((project, i) => {
-            return <li key={i}>{project}</li>
+            return <Project key={i} project={project}/>
           })}
-        </ul>
+        </div>
       </div>
     )
   }

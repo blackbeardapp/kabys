@@ -1,0 +1,6 @@
+:local .Project {
+  padding: 20px;
+}
+:local .Project:nth-child(even) {
+  background-color: rgba(0,0,0,0.05)
+}
