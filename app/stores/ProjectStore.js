@@ -1,5 +1,6 @@
 import alt from '../alt'
 import ProjectActions from '../actions/ProjectActions'
+import child_process from 'child_process'
 
 class ProjectStore {
   constructor() {
@@ -18,7 +19,7 @@ class ProjectStore {
     ProjectActions.saveProjects(this.projects)
   }
   handleBuildProject(project) {
-    alert('Building ' + project)
+    alert('Building ' + project + '\n' + child_process.execSync('docker --version').toString())
   }
 }
 
