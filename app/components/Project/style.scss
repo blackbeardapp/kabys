@@ -1,6 +1,14 @@
 :local .Project {
   padding: 20px;
+  display: flex;
+  align-items: center;
 }
 :local .Project:nth-child(even) {
   background-color: rgba(0,0,0,0.05)
+}
+:local .ProjectName {
+  flex: 1
+}
+:local .ProjectActions {
+
 }
