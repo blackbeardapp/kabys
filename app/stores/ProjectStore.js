@@ -6,7 +6,8 @@ class ProjectStore {
     this.projects = []
     this.bindListeners({
       handleUpdateProjects: ProjectActions.UPDATE_PROJECTS,
-      handleCreateProject: ProjectActions.CREATE_PROJECT
+      handleCreateProject: ProjectActions.CREATE_PROJECT,
+      handleBuildProject: ProjectActions.BUILD_PROJECT
     })
   }
   handleUpdateProjects(projects) {
@@ -15,6 +16,9 @@ class ProjectStore {
   handleCreateProject(project) {
     this.projects.push(project)
     ProjectActions.saveProjects(this.projects)
+  }
+  handleBuildProject(project) {
+    alert('Building ' + project)
   }
 }
 

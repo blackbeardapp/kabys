@@ -17,6 +17,9 @@ class ProjectActions {
   saveProjects(projects) {
     ProjectSource.save(projects)
   }
+  buildProject(project) {
+    this.dispatch(project)
+  }
 }
 
 export default alt.createActions(ProjectActions)
