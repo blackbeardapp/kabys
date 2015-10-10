@@ -19,7 +19,7 @@ class ProjectStore {
     ProjectActions.saveProjects(this.projects)
   }
   handleBuildProject(project) {
-    alert('Building ' + project + '\n' + child_process.execSync('docker --version').toString())
+    alert('Building ' + project.name + '\n' + child_process.execSync('docker --version').toString())
   }
 }
 
