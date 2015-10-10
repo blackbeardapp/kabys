@@ -15,7 +15,16 @@ class ProjectStore {
     this.projects = projects
   }
   handleCreateProject(project) {
-    this.projects.push(project)
+    var files = project.files.map(file => file.path)
+    var name = project.files[0].fullPath.split('/')[1]
+    var dockerfile = files.filter(file => file.includes('Dockerfile'))[0]
+    var path = files[0].split('/').slice(0, -1).join('/')
+    this.projects.push({
+      name,
+      files,
+      dockerfile,
+      path
+    })
     ProjectActions.saveProjects(this.projects)
   }
   handleBuildProject(project) {

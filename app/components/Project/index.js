@@ -10,8 +10,13 @@ export default class Project extends React.Component {
   render() {
     return (
       <div className={styles.Project}>
-        <div className={styles.ProjectName}>
-          {this.props.project.name}
+        <div className={styles.ProjectInfo}>
+          <h3 className={styles.ProjectName}>
+            {this.props.project.name}
+          </h3>
+          <div className={styles.ProjectPath}>
+            {this.props.project.path}
+          </div>
         </div>
         <div className={styles.ProjectActions}>
           <Button onClick={this.onClickBuild.bind(this)} variant='blue'>Build</Button>

@@ -4,11 +4,21 @@
   align-items: center;
 }
 :local .Project:nth-child(even) {
-  background-color: rgba(0,0,0,0.05)
+  background-color: rgba(0, 169, 232, 0.09);
+}
+:local .Project:nth-child(odd) {
+  background-color: rgba(0, 169, 232, 0.05);
 }
 :local .ProjectName {
+  font-weight: 600;
+  margin: 0;
+}
+:local .ProjectInfo {
   flex: 1
 }
 :local .ProjectActions {
 
+}
+:local .ProjectPath {
+  color: rgba(0,0,0,0.5);
 }

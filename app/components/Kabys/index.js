@@ -20,8 +20,7 @@ export default class Kabys extends React.Component {
   onDragged(files) {
     debug('dropped files', files)
     ProjectActions.createProject({
-      name: files[0].fullPath.split('/')[1],
-      files: files.map(file => file.path)
+      files: files
     })
   }
   render() {
