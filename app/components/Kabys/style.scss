@@ -1,1 +1,7 @@
-.Kabys__Content {}
+.Kabys {
+  height: 100%;
+}
+.Kabys__Content {
+  overflow: auto;
+  height: calc(100% - 100px);
+}
