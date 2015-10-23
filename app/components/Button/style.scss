@@ -3,6 +3,11 @@
   background-color: transparent;
   padding: 8px;
   font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  min-width: 90px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 :local .ButtonWhite {
   border: 2px solid white;
@@ -10,7 +15,6 @@
   &:hover {
     background-color: white;
     color: grey;
-    cursor: pointer;
   }
 }
 :local .ButtonBlue {
@@ -19,6 +23,13 @@
   &:hover {
     background-color: #00a9e8;
     color: white;
-    cursor: pointer;
+  }
+}
+:local .ButtonRed {
+  border: 2px solid red;
+  color: red;
+  &:hover {
+    background-color: red;
+    color: white;
   }
 }

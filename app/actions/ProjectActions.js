@@ -20,6 +20,9 @@ class ProjectActions {
   buildProject(project) {
     this.dispatch(project)
   }
+  deleteProject(project) {
+    this.dispatch(project)
+  }
 }
 
 export default alt.createActions(ProjectActions)

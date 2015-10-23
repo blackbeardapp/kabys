@@ -8,7 +8,8 @@ class ProjectStore {
     this.bindListeners({
       handleUpdateProjects: ProjectActions.UPDATE_PROJECTS,
       handleCreateProject: ProjectActions.CREATE_PROJECT,
-      handleBuildProject: ProjectActions.BUILD_PROJECT
+      handleBuildProject: ProjectActions.BUILD_PROJECT,
+      handleDeleteProject: ProjectActions.DELETE_PROJECT
     })
   }
   handleUpdateProjects(projects) {
@@ -29,6 +30,13 @@ class ProjectStore {
   }
   handleBuildProject(project) {
     alert('Building ' + project.name + '\n' + child_process.execSync('docker --version').toString())
+  }
+  handleDeleteProject(project) {
+    if(confirm('Are you sure you want to delete:\n' + project.name)) {
+      var index = this.projects.indexOf(project)
+      this.projects.splice(index, 1)
+      ProjectActions.saveProjects(this.projects)
+    }
   }
 }
 

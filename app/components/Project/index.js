@@ -7,6 +7,9 @@ export default class Project extends React.Component {
   onClickBuild() {
     ProjectActions.buildProject(this.props.project)
   }
+  onClickDelete() {
+    ProjectActions.deleteProject(this.props.project)
+  }
   render() {
     return (
       <div className={styles.Project}>
@@ -19,7 +22,8 @@ export default class Project extends React.Component {
           </div>
         </div>
         <div className={styles.ProjectActions}>
-          <Button onClick={this.onClickBuild.bind(this)} variant='blue'>Build</Button>
+          <Button onClick={this.onClickBuild.bind(this)} variant='blue' style={{marginRight: 20}}>Build</Button>
+          <Button onClick={this.onClickDelete.bind(this)} variant='red'>Delete</Button>
         </div>
       </div>
     )
