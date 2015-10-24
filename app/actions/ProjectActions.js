@@ -14,9 +14,6 @@ class ProjectActions {
   createProject(project) {
     this.dispatch(project)
   }
-  saveProjects(projects) {
-    ProjectSource.save(projects)
-  }
   buildProject(project) {
     this.dispatch(project)
   }

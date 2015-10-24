@@ -1,6 +1,7 @@
 import alt from '../alt'
 import ProjectActions from '../actions/ProjectActions'
 import child_process from 'child_process'
+import ProjectSource from '../sources/ProjectSource'
 
 class ProjectStore {
   constructor() {
@@ -26,7 +27,7 @@ class ProjectStore {
       dockerfile,
       path
     })
-    ProjectActions.saveProjects(this.projects)
+    ProjectSource.save(this.projects)
   }
   handleBuildProject(project) {
     alert('Building ' + project.name + '\n' + child_process.execSync('docker --version').toString())
@@ -35,7 +36,7 @@ class ProjectStore {
     if(confirm('Are you sure you want to delete:\n' + project.name)) {
       var index = this.projects.indexOf(project)
       this.projects.splice(index, 1)
-      ProjectActions.saveProjects(this.projects)
+      ProjectSource.save(this.projects)
     }
   }
 }
