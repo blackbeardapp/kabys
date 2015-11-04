@@ -33,3 +33,11 @@
     color: white;
   }
 }
+:local .ButtonBlack {
+  border: 2px solid black;
+  color: black;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}

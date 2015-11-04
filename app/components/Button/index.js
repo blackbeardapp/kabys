@@ -7,7 +7,8 @@ export default class Button extends React.Component {
     let classes = classNames(styles.Button, {
       [styles.ButtonWhite]: this.props.variant === 'white' || !this.props.variant || true,
       [styles.ButtonBlue]: this.props.variant === 'blue',
-      [styles.ButtonRed]: this.props.variant === 'red'
+      [styles.ButtonRed]: this.props.variant === 'red',
+      [styles.ButtonBlack]: this.props.variant === 'black'
     })
     return (
       <button className={classes} {...this.props}>
