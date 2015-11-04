@@ -9,35 +9,28 @@
     cursor: pointer;
   }
 }
-:local .ButtonWhite {
-  border: 2px solid white;
-  color: white;
-  &:hover {
-    background-color: white;
-    color: grey;
+
+$buttons: (White, white),
+          (Blue, #00a9e8),
+          (Red, red),
+          (Black, #222),
+          (Green, #6cc644);
+
+@each $button, $color in $buttons {
+  :local .Button#{$button} {
+    border: 2px solid $color;
+    color: $color;
+    &:hover {
+      background-color: $color;
+      color: white;
+    }
   }
-}
-:local .ButtonBlue {
-  border: 2px solid #00a9e8;
-  color: #00a9e8;
-  &:hover {
-    background-color: #00a9e8;
+  :local .Button#{$button}Inverse {
+    background-color: $color;
     color: white;
-  }
-}
-:local .ButtonRed {
-  border: 2px solid red;
-  color: red;
-  &:hover {
-    background-color: red;
-    color: white;
-  }
-}
-:local .ButtonBlack {
-  border: 2px solid #222;
-  color: #222;
-  &:hover {
-    background-color: #222;
-    color: white;
+    border: none;
+    &:hover {
+      background-color: lighten($color, 10%)
+    }
   }
 }
