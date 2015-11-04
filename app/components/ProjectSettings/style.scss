@@ -9,3 +9,12 @@
   color: white;
   font-family: monospace;
 }
+:local .Top {
+  display: flex;
+}
+:local .Close {
+  padding: 10px;
+}
+:local .Info {
+  flex: 1
+}

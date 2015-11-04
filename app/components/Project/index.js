@@ -20,6 +20,11 @@ export default class Project extends React.Component {
   onClickDelete() {
     ProjectActions.deleteProject(this.props.project)
   }
+  onClickClose() {
+    this.setState({
+      settingsOpen: false
+    })
+  }
   render() {
     return (
       <div className={styles.Project}>
@@ -38,7 +43,9 @@ export default class Project extends React.Component {
           </div>
         </div>
         {this.state.settingsOpen &&
-          <ProjectSettings project={this.props.project}/>
+          <div>
+            <ProjectSettings project={this.props.project} onClickClose={this.onClickClose.bind(this)}/>
+          </div>
         }
       </div>
     )

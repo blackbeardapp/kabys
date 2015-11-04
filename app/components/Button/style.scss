@@ -34,10 +34,10 @@
   }
 }
 :local .ButtonBlack {
-  border: 2px solid black;
-  color: black;
+  border: 2px solid #222;
+  color: #222;
   &:hover {
-    background-color: black;
+    background-color: #222;
     color: white;
   }
 }
