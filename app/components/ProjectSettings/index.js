@@ -19,6 +19,11 @@ export default class ProjectSettings extends React.Component {
         <div className={styles.Output}>
           {output.map(item => <div>{item}</div>)}
         </div>
+        {this.props.project.ready &&
+          <div>
+            <Button variant='green-inverse'>Deploy</Button>
+          </div>
+        }
       </div>
     )
   }

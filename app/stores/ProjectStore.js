@@ -11,7 +11,8 @@ class ProjectStore {
       handleCreateProject: ProjectActions.CREATE_PROJECT,
       handleBuildProject: ProjectActions.BUILD_PROJECT,
       handleDeleteProject: ProjectActions.DELETE_PROJECT,
-      handleUpdateBuildOutput: ProjectActions.UPDATE_BUILD_OUTPUT
+      handleUpdateBuildOutput: ProjectActions.UPDATE_BUILD_OUTPUT,
+      handleDoneBuilding: ProjectActions.DONE_BUILDING
     })
   }
   handleUpdateProjects(projects) {
@@ -36,9 +37,9 @@ class ProjectStore {
     var _project = this.projects[id]
     _project.status = text
 
-    var dockerArgs = ['build', '-t', 'test', '/Users/kevinsimper/Projects/awesomeweb/']
+    var dockerArgs = ['build', '-t', _project.name, '/Users/kevinsimper/Projects/awesomeweb/']
     _project.output = []
-    _project.output.push('$ docker' + dockerArgs.join(' '))
+    _project.output.push('$ docker ' + dockerArgs.join(' '))
 
     var build = child_process.spawn('docker', dockerArgs)
     build.stdout.on('data', function (data) {
@@ -48,6 +49,19 @@ class ProjectStore {
           output: data
         })
       })
+    })
+    build.on('close', function (exitCode) {
+      if(exitCode !== 0) {
+        ProjectActions.failedBuilding({
+          project: _project,
+          exitCode
+        })
+      } else {
+        ProjectActions.doneBuilding({
+          project: _project,
+          exitCode
+        })
+      }
     })
   }
   handleUpdateBuildOutput(options) {
@@ -60,6 +74,10 @@ class ProjectStore {
       this.projects.splice(index, 1)
       ProjectSource.save(this.projects)
     }
+  }
+  handleDoneBuilding(options) {
+    var project = options.project
+    project.ready = true
   }
 }
 

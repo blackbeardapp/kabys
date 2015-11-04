@@ -23,6 +23,9 @@ class ProjectActions {
   updateBuildOutput(options) {
     this.dispatch(options)
   }
+  doneBuilding(options) {
+    this.dispatch(options)
+  }
 }
 
 export default alt.createActions(ProjectActions)
