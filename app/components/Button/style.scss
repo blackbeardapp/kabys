@@ -10,24 +10,24 @@
   }
 }
 
-$buttons: (White, white),
-          (Blue, #00a9e8),
-          (Red, red),
-          (Black, #222),
-          (Green, #6cc644);
+$buttons: (White, white, black),
+          (Blue, #00a9e8, white),
+          (Red, red, white),
+          (Black, #222, white),
+          (Green, #6cc644, white);
 
-@each $button, $color in $buttons {
+@each $button, $color, $hoverColor in $buttons {
   :local .Button#{$button} {
     border: 2px solid $color;
     color: $color;
     &:hover {
       background-color: $color;
-      color: white;
+      color: $hoverColor;
     }
   }
   :local .Button#{$button}Inverse {
     background-color: $color;
-    color: white;
+    color: $hoverColor;
     border: none;
     &:hover {
       background-color: lighten($color, 10%)
