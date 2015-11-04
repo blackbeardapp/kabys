@@ -10,7 +10,8 @@ class ProjectStore {
       handleUpdateProjects: ProjectActions.UPDATE_PROJECTS,
       handleCreateProject: ProjectActions.CREATE_PROJECT,
       handleBuildProject: ProjectActions.BUILD_PROJECT,
-      handleDeleteProject: ProjectActions.DELETE_PROJECT
+      handleDeleteProject: ProjectActions.DELETE_PROJECT,
+      handleUpdateBuildOutput: ProjectActions.UPDATE_BUILD_OUTPUT
     })
   }
   handleUpdateProjects(projects) {
@@ -30,7 +31,28 @@ class ProjectStore {
     ProjectSource.save(this.projects)
   }
   handleBuildProject(project) {
-    alert('Building ' + project.name + '\n' + child_process.execSync('docker --version').toString())
+    var text = 'Building ' + project.name + '\n' + child_process.execSync('docker --version').toString()
+    var id = this.projects.indexOf(project)
+    var _project = this.projects[id]
+    _project.status = text
+
+    var dockerArgs = ['build', '-t', 'test', '/Users/kevinsimper/Projects/awesomeweb/']
+    _project.output = []
+    _project.output.push('$ docker' + dockerArgs.join(' '))
+
+    var build = child_process.spawn('docker', dockerArgs)
+    build.stdout.on('data', function (data) {
+      data.toString().split('\n').forEach(function (data) {
+        ProjectActions.updateBuildOutput({
+          project, _project,
+          output: data
+        })
+      })
+    })
+  }
+  handleUpdateBuildOutput(options) {
+    options.project.output = options.project.output || []
+    options.project.output.push(options.output)
   }
   handleDeleteProject(project) {
     if(confirm('Are you sure you want to delete:\n' + project.name)) {
