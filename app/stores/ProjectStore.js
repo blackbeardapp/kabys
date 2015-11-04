@@ -12,7 +12,8 @@ class ProjectStore {
       handleBuildProject: ProjectActions.BUILD_PROJECT,
       handleDeleteProject: ProjectActions.DELETE_PROJECT,
       handleUpdateBuildOutput: ProjectActions.UPDATE_BUILD_OUTPUT,
-      handleDoneBuilding: ProjectActions.DONE_BUILDING
+      handleDoneBuilding: ProjectActions.DONE_BUILDING,
+      handleDeployProject: ProjectActions.DEPLOY_PROJECT
     })
   }
   handleUpdateProjects(projects) {
@@ -78,6 +79,25 @@ class ProjectStore {
   handleDoneBuilding(options) {
     var project = options.project
     project.ready = true
+  }
+  handleDeployProject(project) {
+    project.output = []
+
+    var dockerCmd = 'docker tag -f ' + project.name + ' registry.blackbeard.io/kevinsimper/' + project.name
+    project.output.push('$ ' + dockerCmd)
+    project.output.push(child_process.execSync(dockerCmd).toString())
+    var dockerArgs = ['push', 'registry.blackbeard.io/kevinsimper/' + project.name]
+    project.output.push('$ docker ' + dockerArgs.join(' '))
+
+    var push = child_process.spawn('docker', dockerArgs)
+    push.stdout.on('data', function (data) {
+      data.toString().split('\n').forEach(function (data) {
+        ProjectActions.updateBuildOutput({
+          project, project,
+          output: data
+        })
+      })
+    })
   }
 }
 
