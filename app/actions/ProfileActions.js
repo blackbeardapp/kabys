@@ -14,6 +14,9 @@ class ProfileActions {
   hideGetStarted() {
     this.dispatch()
   }
+  showGetStarted() {
+    this.dispatch()
+  }
 }
 
 export default alt.createActions(ProfileActions)

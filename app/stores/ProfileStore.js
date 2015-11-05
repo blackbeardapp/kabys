@@ -7,7 +7,8 @@ class ProfileStore {
     this.profile = {}
     this.bindListeners({
       handleUpdateProfile: ProfileActions.UPDATE_PROFILE,
-      handleHideGetStarted: ProfileActions.HIDE_GET_STARTED
+      handleHideGetStarted: ProfileActions.HIDE_GET_STARTED,
+      handleShowGetStarted: ProfileActions.SHOW_GET_STARTED
     })
   }
   handleUpdateProfile(profile) {
@@ -16,6 +17,9 @@ class ProfileStore {
   handleHideGetStarted() {
     this.profile.gotStarted = true
     ProfileSource.save(this.profile)
+  }
+  handleShowGetStarted() {
+    this.profile.gotStarted = false
   }
 }
 
