@@ -1,0 +1,21 @@
+:local .Title {
+  text-align: center;
+  font-weight: 300;
+  font-size: 3rem;
+}
+:local .List {
+  margin: 0 10% 50px;
+}
+:local .ListItem {
+  h2 {
+    font-style: italic;
+    font-weight: 300;
+    strong {
+      font-size: 120%;
+      font-weight: 400;
+    }
+  }
+}
+:local .ListDesc {
+  padding-left: 30px;
+}
