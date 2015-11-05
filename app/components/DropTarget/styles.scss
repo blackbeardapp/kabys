@@ -1,0 +1,22 @@
+.DropTarget {
+  display: none;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 20px;
+  position: absolute;
+  border: 10px dashed #222;
+  border-radius: 10px;
+}
+:local .Text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  font-size: 4em;
+}
+.drag .DropTarget {
+  display: block;
+}
