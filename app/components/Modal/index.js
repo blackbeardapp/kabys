@@ -3,8 +3,8 @@ import styles from './style.scss'
 
 export default class Modal extends React.Component {
   render() {
-    if(!this.props.display) return false;
-    
+    if(!this.props.show) return false;
+
     return (
       <div>
         <div className={styles.Modal}>
