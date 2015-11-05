@@ -9,6 +9,9 @@
     cursor: pointer;
   }
 }
+:local .ButtonBig {
+  padding: 15px 25px;
+}
 
 $buttons: (White, white, black),
           (Blue, #00a9e8, white),
