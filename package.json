@@ -6,9 +6,11 @@
   "scripts": {
     "start": "NODE_ENV=production electron .",
     "start-dev": "NODE_ENV=development electron --remote-debugging-port=8315 .",
-    "watch": "webpack-dev-server --inline",
+    "watch": "NODE_ENV=development webpack-dev-server --inline",
+    "compile": "NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-packager ./ Kabys --platform=darwin --arch=x64 --version=0.33.6 --out=dist --ignore='^/dist$'"
+    "build": "electron-packager ./ Kabys --all --version=0.33.6 --icon='./icon' --out=dist --ignore='^/dist$'",
+    "build-mac": "electron-packager ./ Kabys --platform=darwin --arch=x64 --version=0.33.6 --out=dist --ignore='^/dist$'"
   },
   "author": "Kevin Simper",
   "devDependencies": {
@@ -17,6 +19,8 @@
     "css-loader": "^0.21.0",
     "electron-packager": "^5.1.0",
     "electron-prebuilt": "^0.34.1",
+    "file-loader": "^0.8.4",
+    "image-webpack-loader": "^1.6.2",
     "node-sass": "^3.3.3",
     "sass-loader": "^3.0.0",
     "style-loader": "^0.13.0",
@@ -25,6 +29,7 @@
   },
   "dependencies": {
     "alt": "^0.17.6",
+    "axios": "^0.7.0",
     "classnames": "^2.2.0",
     "debug": "^2.2.0",
     "drag-drop": "^2.3.0",
