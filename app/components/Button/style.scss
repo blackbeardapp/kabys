@@ -12,6 +12,11 @@
 :local .ButtonBig {
   padding: 15px 25px;
 }
+:local .ButtonSmall {
+  padding: 3px 5px;
+  min-width: initial;
+  font-size: 0.8em;
+}
 
 $buttons: (White, white, black),
           (Blue, #00a9e8, white),

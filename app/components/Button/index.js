@@ -12,6 +12,7 @@ export default class Button extends React.Component {
       [styles.ButtonGreen]: this.props.variant === 'green',
       [styles.ButtonGreenInverse]: this.props.variant === 'green-inverse',
       [styles.ButtonBig]: this.props.size === 'big',
+      [styles.ButtonSmall]: this.props.size === 'small',
     })
     return (
       <button className={classes} {...this.props}>
