@@ -9,6 +9,9 @@ import GettingStarted from '../GettingStarted'
 import ProfileActions from '../../actions/ProfileActions'
 import ProfileStore from '../../stores/ProfileStore'
 import DropTarget from '../DropTarget'
+import Login from '../Login'
+import KabysActions from '../../actions/KabysActions'
+import KabysStore from '../../stores/KabysStore'
 let debug = debugFunc('kabys')
 
 export default class Kabys extends React.Component {
@@ -17,13 +20,15 @@ export default class Kabys extends React.Component {
     this.state = {
       profile: {
         gotStarted: true // this is so the box does not show up
-      }
+      },
+      page: ''
     }
   }
   componentDidMount() {
     dragDrop('body', this.onDragged.bind(this))
     ProfileStore.listen(this.onChange.bind(this))
     ProfileActions.fetchProfile()
+    KabysStore.listen(this.onChange.bind(this))
   }
   onChange(profile) {
     this.setState(profile)
@@ -37,7 +42,7 @@ export default class Kabys extends React.Component {
   render() {
     return (
       <div className='Kabys'>
-        <Header/>
+        <Header profile={this.state.profile}/>
         <div className='Kabys__Content'>
           <Projects/>
         </div>
@@ -45,6 +50,9 @@ export default class Kabys extends React.Component {
           <GettingStarted/>
         }
         <DropTarget/>
+        {this.state.page === 'login' &&
+          <Login/>
+        }
       </div>
     )
   }

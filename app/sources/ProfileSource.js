@@ -4,7 +4,6 @@ export default {
   fetch: () => {
     return new Promise(resolve => {
       db.get('profile', (err, value) => {
-        console.log('got value', value)
         if(value) {
           resolve(value)
         } else {
@@ -14,7 +13,6 @@ export default {
     })
   },
   save: (profile) => {
-    console.log(profile)
     db.put('profile', profile)
   }
 }

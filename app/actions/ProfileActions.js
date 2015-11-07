@@ -17,6 +17,12 @@ class ProfileActions {
   showGetStarted() {
     this.dispatch()
   }
+  login(options) {
+    this.dispatch(options)
+  }
+  logOut() {
+    this.dispatch()
+  }
 }
 
 export default alt.createActions(ProfileActions)

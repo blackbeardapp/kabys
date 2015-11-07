@@ -1,11 +1,11 @@
 .Header {
   background-color: #00a9e8;
   color: white;
-  font-size: 2em;
   padding: 50px 20px 20px;
   display: flex;
 }
 .Header__Title {
+  font-size: 2em;
   flex: 1;
 }
 .Header__Settings {
@@ -13,4 +13,8 @@
 }
 :local .Button {
   margin: 0 10px;
+}
+:local .LoggedIn {
+  display: flex;
+  align-items: center;
 }
