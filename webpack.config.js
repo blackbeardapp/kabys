@@ -11,8 +11,8 @@ module.exports = {
       { test: /\.scss$/, loaders: ["style", "css?localIdentName=[local]--[hash:base64:5]", "sass"]}
     ]
   },
-  target: 'atom',
   externals: {
-    db: 'db'
+    db: 'db',
+    child_process: 'child_process'
   }
 }
